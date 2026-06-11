@@ -123,7 +123,7 @@
             <div class="navi_logo_box">
                 <h1 id="logo"><a href="index.html">로고</a></h1> 
                 <div class="bgm_wrap">
-                    <audio id="radio" src="../bgm.php?f=bgm1" loop></audio>
+                    <audio id="radio" src="bgm1.mp3" loop preload="auto"></audio>
                     <a onclick="javascript:playAudio();" id="bgm">
                         <div class="bgm_line">
                             <ul>
@@ -136,7 +136,7 @@
             </div>
             <script type="text/javascript">
                         
-                var currentFile = "../bgm.php?f=bgm1";
+                var currentFile = "bgm1.mp3";
                 var auto1;
     
                 function startAudio() {
@@ -175,6 +175,21 @@
                         stopAudio();
                     }
                 }
+            </script>
+            <script type="text/javascript">
+                // 브라우저 자동재생 정책: 사용자의 첫 상호작용에서 BGM 자동 시작 (ON/OFF 토글과 충돌 방지)
+                (function () {
+                    var events = ['pointerdown', 'touchstart', 'keydown', 'wheel'];
+                    function detach() { events.forEach(function (ev) { document.removeEventListener(ev, onFirstGesture, true); }); }
+                    function onFirstGesture(e) {
+                        // ON/OFF 버튼 클릭이면 기존 토글 로직(playAudio)에 맡김
+                        if (e && e.target && e.target.closest && e.target.closest('#bgm')) { detach(); return; }
+                        var a = document.getElementById('radio');
+                        if (a && a.paused) { try { startAudio(); } catch (err) {} }
+                        detach();
+                    }
+                    events.forEach(function (ev) { document.addEventListener(ev, onFirstGesture, true); });
+                })();
             </script>	
             <div class="gnb"> 
                 <div>
