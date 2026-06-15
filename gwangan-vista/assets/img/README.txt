@@ -14,6 +14,9 @@
   plan_59.jpg   59A 평면도
   plan_59c.jpg  59C 평면도
   plan_84.jpg   84A 평면도
+  premium_community.jpg  프리미엄 갤러리 - 커뮤니티
+  premium_landscape.jpg  프리미엄 갤러리 - 조경·산책로
+  premium_design.jpg     프리미엄 갤러리 - 특화 설계
   (조감도/투시도 클린 렌더가 생기면 aerial.jpg 교체 권장)
 
 * 슬라이더 컷은 원본 사이트에서도 'IMAGE CUT(이미지컷)' 컨셉 사진입니다.

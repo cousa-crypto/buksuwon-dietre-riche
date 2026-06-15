@@ -101,7 +101,7 @@ nav.menu a:hover{color:var(--ink)}
 /* 정보 패널 */
 .info .badge{display:inline-block;background:var(--soft);color:var(--gold-d);border:1px solid #ead9b8;
   font-size:11px;font-weight:700;letter-spacing:.12em;padding:5px 11px;border-radius:30px}
-.info h1{font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin:14px 0 8px}
+.info h1{font-size:40px;font-weight:800;letter-spacing:-.02em;line-height:1.18;color:var(--ink);margin:14px 0 10px}
 .info .lead{font-size:15px;color:#666;margin-bottom:22px}
 
 .price-box{padding:18px 0;border-top:1px solid var(--line)}
@@ -206,24 +206,18 @@ nav.menu a:hover{color:var(--ink)}
 .overview dd{flex:1;padding:15px 20px;font-size:14px;color:#444}
 .disc{max-width:760px;margin:22px auto 0;font-size:12px;color:#9aa0ab;line-height:1.7}
 
-/* ============ 방문후기 (Kurly 후기) ============ */
-.rev-summary{display:flex;align-items:center;gap:40px;max-width:760px;margin:0 auto 32px;
-  background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px 34px;flex-wrap:wrap}
-.rev-summary .score{text-align:center}
-.rev-summary .score b{font-size:46px;color:var(--ink);font-weight:800;line-height:1}
-.rev-summary .stars{color:var(--gold);font-size:18px;letter-spacing:2px;margin-top:6px}
-.rev-summary .bars{flex:1;min-width:240px}
-.rev-summary .bar{display:flex;align-items:center;gap:10px;font-size:12px;color:#888;margin:5px 0}
-.rev-summary .bar .track{flex:1;height:7px;background:#eef0f4;border-radius:10px;overflow:hidden}
-.rev-summary .bar .fill{height:100%;background:var(--gold)}
-.rev-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
-.rev{border:1px solid var(--line);border-radius:10px;padding:20px 22px;background:#fff}
-.rev .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.rev .who{font-weight:700;color:#333;font-size:14px}
-.rev .who .tag{font-size:11px;color:var(--gold-d);background:#fbf6ea;border-radius:20px;padding:2px 8px;margin-left:6px}
-.rev .date{font-size:12px;color:var(--muted)}
-.rev .st{color:var(--gold);font-size:13px;letter-spacing:1px;margin-bottom:6px}
-.rev p{font-size:14.5px;color:#555;line-height:1.7}
+/* ============ 자주 묻는 질문 (Kurly 상품문의 차용) ============ */
+.faq-list{max-width:760px;margin:0 auto}
+.faq-list details{border:1px solid var(--line);border-radius:10px;background:#fff;margin-bottom:12px;overflow:hidden}
+.faq-list summary{list-style:none;cursor:pointer;padding:18px 22px;font-size:15.5px;font-weight:700;color:var(--ink);
+  display:flex;align-items:center;gap:12px}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary .q{flex:0 0 auto;width:24px;height:24px;border-radius:6px;background:var(--soft);color:var(--gold-d);
+  font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.faq-list summary::after{content:"+";margin-left:auto;font-size:22px;line-height:1;color:#c2c7cf;font-weight:300;transition:transform .2s}
+.faq-list details[open] summary::after{transform:rotate(45deg)}
+.faq-list details[open] summary{border-bottom:1px solid var(--line)}
+.faq-list .a{padding:16px 22px 20px;font-size:14.5px;color:#555;line-height:1.75}
 
 /* ============ 관심고객 등록 (Kurly 문의 → 폼) ============ */
 .reg{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:900px;margin:0 auto;align-items:start}
@@ -267,21 +261,87 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
   background:#fff;font-size:18px;color:var(--ink);box-shadow:0 3px 12px rgba(0,0,0,.12);display:none}
 .top-btn.show{display:block}
 
-/* 직방 공식 로고 배지 (좌측 하단 고정) */
-.zb-badge{position:fixed;left:18px;bottom:22px;z-index:56;display:flex;flex-direction:column;align-items:center;gap:3px;
-  background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 13px 7px;
-  box-shadow:0 4px 16px rgba(0,0,0,.12);text-decoration:none;transition:transform .15s,box-shadow .15s}
-.zb-badge:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.18)}
-.zb-badge img{height:21px;width:auto;display:block}
-.zb-badge span{font-size:10px;color:#9aa0ab;letter-spacing:.02em;font-weight:600}
+/* 직방 홈페이지 랜딩 버튼 (좌측 하단 고정, 정사각형) */
+.zb-badge{position:fixed;left:18px;bottom:22px;z-index:56;width:88px;height:88px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
+  background:#fff;border:1px solid var(--line);border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,.16);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.zb-badge:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.24)}
+.zb-badge img{width:64px;height:auto;display:block}
+.zb-badge span{font-size:11px;color:#8a8f99;letter-spacing:.01em;font-weight:700}
+
+/* ============ 이미지 갤러리 (중앙 확대 + 우측 슬롯 인벤토리) ============ */
+.imgset{display:grid;grid-template-columns:1fr 132px;gap:16px;align-items:start;margin-top:6px}
+.imgset .iv-main{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;margin:0}
+.imgset .iv-main.ph::after{display:none}
+.imgset .iv-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px 18px;color:#fff;
+  font-size:14px;font-weight:700;letter-spacing:-.01em;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.imgset .iv-thumbs{display:flex;flex-direction:column;gap:10px}
+.imgset .iv-thumbs .shot{aspect-ratio:4/3;cursor:pointer;border:2px solid transparent;border-radius:9px;transition:border-color .15s,transform .15s}
+.imgset .iv-thumbs .shot:hover{transform:translateY(-1px)}
+.imgset .iv-thumbs .shot.active{border-color:var(--ink)}
+.imgset .iv-thumbs .shot.ph::before{display:none}
+.imgset .iv-thumbs .shot.ph::after{font-size:10px;padding:5px;letter-spacing:0}
+/* 프리미엄: 썸네일 인벤토리를 메인 아래(가로 필름스트립)로 */
+.imgset.stacked{grid-template-columns:1fr}
+.imgset.stacked .iv-main{aspect-ratio:16/9}
+.imgset.stacked .iv-thumbs{flex-direction:row;gap:12px;margin-top:14px}
+.imgset.stacked .iv-thumbs .shot{flex:1 1 0;min-width:0}
+
+/* ============ WHY ZIGBANG · HOGANGNONO (Kurly WHY KURLY 차용) ============ */
+.section.why{position:relative;overflow:hidden;
+  background:linear-gradient(162deg,#0e1729 0%,#192745 58%,#212f59 100%)}
+.section.why::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(55% 45% at 85% 6%, rgba(181,152,90,.18), transparent 62%),
+            radial-gradient(46% 42% at 6% 98%, rgba(255,102,0,.10), transparent 60%)}
+.why .wrap{position:relative;z-index:1}
+.why .sec-head .ey{color:var(--gold)}
+.why .sec-head h2{color:#fff;letter-spacing:.06em;font-weight:800}
+.why .sec-head p{color:#b9c2d4}
+.why-logos{display:flex;align-items:center;justify-content:center;gap:15px;margin:6px auto 42px;
+  background:#fff;border-radius:40px;padding:12px 24px;width:max-content;max-width:92%;
+  box-shadow:0 12px 36px rgba(0,0,0,.32)}
+.why-logos .zb{height:22px;width:auto;display:block}
+.why-logos .sep{width:1px;height:22px;background:#e6e6e6}
+.why-hgn{display:flex;align-items:center;gap:7px}
+.why-hgn img{height:25px;width:25px;border-radius:7px;display:block}
+.why-hgn b{font-size:18px;color:#5b5bd6;font-weight:800;letter-spacing:-.02em}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.why-grid .wi{position:relative;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;padding:30px 22px 26px;overflow:hidden;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease}
+.why-grid .wi::after{content:"";position:absolute;left:0;top:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .22s}
+.why-grid .wi:hover{transform:translateY(-5px);border-color:rgba(181,152,90,.45);background:rgba(255,255,255,.075)}
+.why-grid .wi:hover::after{opacity:1}
+.why-grid .n{font-size:30px;line-height:1;font-weight:800;margin-bottom:16px;
+  background:linear-gradient(180deg,#e4cd97,#b5985a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.why-grid .tag{display:block;font-size:11px;letter-spacing:.14em;color:var(--gold);font-weight:700;margin-bottom:9px}
+.why-grid h4{font-size:17px;color:#fff;font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
+.why-grid p{font-size:13.5px;color:#a9b2c4;line-height:1.75}
+.why-lead{max-width:700px;margin:2px auto 36px;text-align:center;color:#c4ccda;font-size:15px;line-height:1.75}
+.why-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:0;margin-bottom:34px}
+.why-step{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:24px 22px}
+.why-step .st-h{display:flex;align-items:center;gap:11px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.10)}
+.why-step .st-h .ic{flex:0 0 auto;width:40px;height:40px;border-radius:11px;background:rgba(181,152,90,.18);display:flex;align-items:center;justify-content:center;font-size:19px}
+.why-step .st-h .tag{display:block;font-size:10px;letter-spacing:.12em;color:var(--gold);font-weight:700;margin-bottom:2px}
+.why-step .st-h b{font-size:15px;color:#fff;font-weight:800;letter-spacing:-.01em}
+.why-step ul{list-style:none}
+.why-step li{position:relative;font-size:13px;color:#aeb6c6;padding:8px 0 8px 15px}
+.why-step li+li{border-top:1px solid rgba(255,255,255,.06)}
+.why-step li::before{content:"";position:absolute;left:0;top:14px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.why-arrow{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:20px;padding:0 10px}
+.why-quote{margin-top:26px;text-align:center;color:#cdd4e0;font-size:15px;font-weight:600;border-top:1px solid rgba(255,255,255,.10);padding-top:28px}
+.why-quote .g{color:var(--gold)}
 
 /* ============ 반응형 ============ */
 @media(max-width:980px){
   .product{grid-template-columns:1fr;gap:30px}
   .gallery .main{aspect-ratio:4/3}
-  .info h1{font-size:26px}
+  .info h1{font-size:32px}
   .reg{grid-template-columns:1fr;gap:30px}
   .type-panel.active{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:720px){
   nav.menu,.gnb-cta{display:none}
@@ -299,9 +359,17 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
   .mbar{display:flex}
   footer{padding-bottom:80px}
   .topbar{display:none}
-  .rev-summary{gap:24px}
-  .zb-badge{bottom:80px;left:12px;padding:7px 10px 5px}
-  .zb-badge img{height:16px}
+  .why-grid{grid-template-columns:1fr}
+  .why-flow{grid-template-columns:1fr}
+  .why-arrow{transform:rotate(90deg);padding:8px 0}
+  .imgset{grid-template-columns:1fr}
+  .imgset .iv-thumbs{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .imgset .iv-thumbs::-webkit-scrollbar{display:none}
+  .imgset .iv-thumbs .shot{flex:0 0 96px}
+  .imgset.stacked .iv-thumbs .shot{flex:0 0 96px}
+  .zb-badge{width:72px;height:72px;bottom:80px;left:12px;gap:5px}
+  .zb-badge img{width:52px}
+  .zb-badge span{font-size:10px}
 }
 </style>
 </head>
@@ -331,7 +399,7 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
       <a href="#site">입지조건</a>
       <a href="#premium">프리미엄</a>
       <a href="#floorplan">평면안내</a>
-      <a href="#reviews">후기</a>
+      <a href="#faq">FAQ</a>
       <a href="#register">관심고객등록</a>
     </nav>
     <div class="gnb-cta">
@@ -350,7 +418,7 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
     <a href="#site" onclick="toggleDrawer(false)">입지조건</a>
     <a href="#premium" onclick="toggleDrawer(false)">프리미엄</a>
     <a href="#floorplan" onclick="toggleDrawer(false)">평면안내</a>
-    <a href="#reviews" onclick="toggleDrawer(false)">모델하우스 후기</a>
+    <a href="#faq" onclick="toggleDrawer(false)">자주 묻는 질문</a>
     <a href="#register" onclick="toggleDrawer(false)">관심고객등록</a>
     <a href="#location" onclick="toggleDrawer(false)">오시는 길</a>
     <a href="tel:051-741-3300" style="color:var(--gold)">📞 분양문의 051-741-3300</a>
@@ -445,7 +513,7 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
     <a href="#site" data-t="site">입지조건</a>
     <a href="#premium" data-t="premium">프리미엄</a>
     <a href="#floorplan" data-t="floorplan">평면안내</a>
-    <a href="#reviews" data-t="reviews">모델하우스 후기<span class="cnt">128</span></a>
+    <a href="#faq" data-t="faq">자주 묻는 질문</a>
     <a href="#register" data-t="register">관심고객등록</a>
   </div>
 </div>
@@ -476,38 +544,37 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
 
 <!-- ===== ② 입지조건 (신규) ===== -->
 <section class="section" id="site">
-  <div class="wrap narrow story">
+  <div class="wrap">
     <div class="sec-head">
       <div class="ey">LOCATION</div>
       <h2>입지조건</h2>
       <p>더블 역세권 · 학군 · 생활인프라를 모두 갖춘 광안동 중심 입지</p>
     </div>
 
-    <figure class="shot ph big" data-label="입지 위치도 · 수영역/망미역 더블역세권"><img src="assets/img/map.jpg" onerror="phFail(this)" alt="광안 센텀 비스타동원 입지 위치도"></figure>
-
-    <div class="grid2">
-      <figure class="shot ph" data-label="도심 시티뷰"><img src="assets/img/city.png" onerror="phFail(this)" alt="도심 시티뷰"></figure>
-      <figure class="shot ph" data-label="더블 역세권"><img src="assets/img/traffic.png" onerror="phFail(this)" alt="더블 역세권 교통"></figure>
-    </div>
-
-    <div class="feat" style="margin-top:8px">
-      <div class="it"><div class="ic">🚇</div><h4>더블 역세권</h4><p>2·3호선 환승 수영역 약 500m, 3호선 망미역 인접. 부산 전역을 빠르게 연결합니다.</p></div>
-      <div class="it"><div class="ic">🎓</div><h4>학세권 입지</h4><p>반경 500m 내 초·중·고 인접. 수영초·광안중·덕문여고 등 우수한 교육환경.</p></div>
-      <div class="it"><div class="ic">🛍️</div><h4>생활·의료 인프라</h4><p>센텀시티·신세계/롯데백화점, 광안리해수욕장과 금련산·황령산까지 누리는 일상.</p></div>
+    <div class="imgset">
+      <figure class="shot ph iv-main" data-label="입지 위치도">
+        <img src="assets/img/map.jpg" onerror="phFail(this)" alt="광안 센텀 비스타동원 입지 위치도">
+        <figcaption class="iv-cap">입지 위치도 · 수영역·망미역 더블역세권</figcaption>
+      </figure>
+      <div class="iv-thumbs">
+        <figure class="shot ph active" data-label="위치도" data-src="assets/img/map.jpg" data-cap="입지 위치도 · 수영역·망미역 더블역세권" onclick="pickShot(this)"><img src="assets/img/map.jpg" onerror="phFail(this)" alt=""></figure>
+        <figure class="shot ph" data-label="교통" data-src="assets/img/traffic.png" data-cap="교통 · 2·3호선 수영역, 3호선 망미역" onclick="pickShot(this)"><img src="assets/img/traffic.png" onerror="phFail(this)" alt=""></figure>
+        <figure class="shot ph" data-label="학군" data-src="assets/img/school.png" data-cap="학군 · 수영초·광안중·덕문여고" onclick="pickShot(this)"><img src="assets/img/school.png" onerror="phFail(this)" alt=""></figure>
+        <figure class="shot ph" data-label="생활" data-src="assets/img/life.png" data-cap="생활 · 센텀시티·신세계/롯데백화점" onclick="pickShot(this)"><img src="assets/img/life.png" onerror="phFail(this)" alt=""></figure>
+        <figure class="shot ph" data-label="시티뷰" data-src="assets/img/city.png" data-cap="도심 시티뷰" onclick="pickShot(this)"><img src="assets/img/city.png" onerror="phFail(this)" alt=""></figure>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ===== ③ 프리미엄 ===== -->
 <section class="section" id="premium">
-  <div class="wrap narrow story">
+  <div class="wrap">
     <div class="sec-head">
       <div class="ey">PREMIUM</div>
       <h2>프리미엄</h2>
       <p>광안의 중심에 세워지는 랜드마크의 품격</p>
     </div>
-
-    <figure class="shot ph big" data-label="광안 센텀 비스타동원"><img src="assets/img/aerial.jpg" onerror="phFail(this)" alt="광안 센텀 비스타동원 대표 비주얼"></figure>
 
     <div class="copy-block">
       <h3>바다를 마주하고, <span class="g">센텀을 품다</span></h3>
@@ -515,10 +582,18 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
          하루의 시작과 끝이 특별해지는 단 하나의 주거를 제안합니다.</p>
     </div>
 
-    <div class="feat">
-      <div class="it"><div class="ic">🌊</div><h4>오션 &amp; 시티뷰</h4><p>광안리 바다와 센텀 스카이라인을 동시에 조망하는 파노라마 설계.</p></div>
-      <div class="it"><div class="ic">🏙️</div><h4>랜드마크 대단지</h4><p>지하 3층~지상 29층, 7개동 525세대. 광안동 스카이라인을 새로 그립니다.</p></div>
-      <div class="it"><div class="ic">🏗️</div><h4>동원개발 브랜드</h4><p>검증된 시공 브랜드의 신뢰와 입주민 특화 커뮤니티 설계.</p></div>
+    <div class="imgset stacked">
+      <figure class="shot ph iv-main" data-label="대표 조감도">
+        <img src="assets/img/aerial.jpg" onerror="phFail(this)" alt="광안 센텀 비스타동원 대표 비주얼">
+        <figcaption class="iv-cap">대표 조감도 · 광안 센텀 비스타동원</figcaption>
+      </figure>
+      <div class="iv-thumbs">
+        <figure class="shot ph active" data-label="대표" data-src="assets/img/aerial.jpg" data-cap="대표 조감도 · 광안 센텀 비스타동원" onclick="pickShot(this)"><img src="assets/img/aerial.jpg" onerror="phFail(this)" alt=""></figure>
+        <figure class="shot ph" data-label="시티뷰" data-src="assets/img/city.png" data-cap="오션 &amp; 시티뷰 조망" onclick="pickShot(this)"><img src="assets/img/city.png" onerror="phFail(this)" alt=""></figure>
+        <figure class="shot ph" data-label="커뮤니티" data-src="assets/img/premium_community.jpg" data-cap="입주민 특화 커뮤니티 (이미지 준비중)" onclick="pickShot(this)"><img src="assets/img/premium_community.jpg" onerror="phFail(this)" alt=""></figure>
+        <figure class="shot ph" data-label="조경" data-src="assets/img/premium_landscape.jpg" data-cap="단지 조경·산책로 (이미지 준비중)" onclick="pickShot(this)"><img src="assets/img/premium_landscape.jpg" onerror="phFail(this)" alt=""></figure>
+        <figure class="shot ph" data-label="특화설계" data-src="assets/img/premium_design.jpg" data-cap="단지 특화 설계 (이미지 준비중)" onclick="pickShot(this)"><img src="assets/img/premium_design.jpg" onerror="phFail(this)" alt=""></figure>
+      </div>
     </div>
   </div>
 </section>
@@ -581,44 +656,124 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
   </div>
 </section>
 
-<!-- ===== ③ 방문후기 (Kurly 후기) ===== -->
-<section class="section" id="reviews">
+<!-- ===== 와이 직방·호갱노노 (데이터 기반 분양 마케팅) — 평면안내와 후기 사이 ===== -->
+<section class="section why" id="why">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <div class="ey">DATA-DRIVEN MARKETING</div>
+      <h2>WHY ZIGBANG · HOGANGNONO</h2>
+      <p>관심은 데이터가 되고, 데이터는 분양 전환 전략이 됩니다.</p>
+    </div>
+
+    <div class="why-logos">
+      <img class="zb" src="assets/img/zigbang_logo.png" alt="직방">
+      <span class="sep"></span>
+      <span class="why-hgn"><img src="assets/img/hogangnono_icon.png" alt="호갱노노"><b>호갱노노</b></span>
+    </div>
+
+    <p class="why-lead">직방·호갱노노는 사용자의 실제 탐색·비교·문의·방문 관심 행동을 분석해, 분양에 관심 있는 고객에게 더 정확하게 현장 정보를 전달합니다.</p>
+
+    <!-- 행동 데이터 → 분석 → 광고 전략 플로우 -->
+    <div class="why-flow">
+      <div class="why-step">
+        <div class="st-h"><span class="ic">🔍</span><div><span class="tag">USER BEHAVIOR</span><b>유저 행동 데이터</b></div></div>
+        <ul>
+          <li>관심 지역 반복 조회</li>
+          <li>유사 단지 비교 탐색</li>
+          <li>분양가 · 조건 탐색</li>
+          <li>상담 · 문의 행동</li>
+          <li>모델하우스 방문 관심</li>
+        </ul>
+      </div>
+      <div class="why-arrow">→</div>
+      <div class="why-step">
+        <div class="st-h"><span class="ic">📊</span><div><span class="tag">DATA INSIGHT</span><b>데이터 분석 · 인사이트</b></div></div>
+        <ul>
+          <li>행동 데이터 통합 분석</li>
+          <li>지역 · 입지 선호 분석</li>
+          <li>가격 민감도 분석</li>
+          <li>관심 단계 · 전환 가능성 예측</li>
+        </ul>
+      </div>
+      <div class="why-arrow">→</div>
+      <div class="why-step">
+        <div class="st-h"><span class="ic">🎯</span><div><span class="tag">AD STRATEGY</span><b>광고 전략 연결</b></div></div>
+        <ul>
+          <li>신규 분양 인지도 광고</li>
+          <li>브랜드 각인 광고</li>
+          <li>메시지 리마케팅</li>
+          <li>방문 유도 광고</li>
+          <li>맞춤 타겟팅 고도화</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 핵심 강점 4카드 -->
+    <div class="why-grid">
+      <div class="wi">
+        <div class="n">01</div>
+        <div class="tag">DEMAND DISCOVERY</div>
+        <h4>움직이는 수요 발견</h4>
+        <p>관심 지역을 반복 조회하거나 유사 단지를 비교하는 행동을 분석해, 현장에 반응할 가능성이 높은 수요를 발견합니다.</p>
+      </div>
+      <div class="wi">
+        <div class="n">02</div>
+        <div class="tag">CUSTOMER JOURNEY</div>
+        <h4>단계별 고객 여정 분석</h4>
+        <p>인지 → 탐색 → 비교 → 고려 → 문의 → 방문으로 이어지는 의사결정 흐름을 기반으로 전환 가능성을 판단합니다.</p>
+      </div>
+      <div class="wi">
+        <div class="n">03</div>
+        <div class="tag">CUSTOM TARGETING</div>
+        <h4>현장 맞춤 타겟팅</h4>
+        <p>지역·단지·가격·상품 조건·상담 행동을 종합해 분양 현장별로 적합한 고객군을 세분화합니다.</p>
+      </div>
+      <div class="wi">
+        <div class="n">04</div>
+        <div class="tag">AD EFFICIENCY</div>
+        <h4>광고 효율 극대화</h4>
+        <p>무분별한 노출보다 전환 가능성이 높은 고객에게 메시지를 집중해 광고 효율과 상담 전환 가능성을 높입니다.</p>
+      </div>
+    </div>
+
+    <p class="why-quote">광고는 많이 보여주는 것이 아니라, <span class="g">움직이는 수요를 정확히 발견</span>하는 것입니다.</p>
+  </div>
+</section>
+
+<!-- ===== 자주 묻는 질문 (Kurly 상품문의 차용) ===== -->
+<section class="section" id="faq">
   <div class="wrap">
     <div class="sec-head">
-      <div class="ey">VISIT REVIEW</div>
-      <h2>모델하우스 후기</h2>
-      <p>실제 방문 고객들이 남긴 생생한 후기 (샘플)</p>
+      <div class="ey">FAQ</div>
+      <h2>자주 묻는 질문</h2>
+      <p>분양 상담 전, 가장 많이 궁금해하시는 내용을 모았습니다</p>
     </div>
 
-    <div class="rev-summary">
-      <div class="score">
-        <b>4.8</b>
-        <div class="stars">★★★★★</div>
-        <div style="font-size:12px;color:#999;margin-top:6px">128개 후기</div>
-      </div>
-      <div class="bars">
-        <div class="bar"><span>친절상담</span><div class="track"><div class="fill" style="width:96%"></div></div><span>96%</span></div>
-        <div class="bar"><span>입지만족</span><div class="track"><div class="fill" style="width:92%"></div></div><span>92%</span></div>
-        <div class="bar"><span>평면구성</span><div class="track"><div class="fill" style="width:89%"></div></div><span>89%</span></div>
-      </div>
-    </div>
-
-    <div class="rev-list">
-      <div class="rev">
-        <div class="top"><div class="who">김○○<span class="tag">방문상담</span></div><div class="date">2026.06.10</div></div>
-        <div class="st">★★★★★</div>
-        <p>광안리랑 센텀 둘 다 가까워서 입지가 정말 마음에 들었어요. 모델하우스 84A타입 4Bay 구조가 넓고 채광도 좋더라구요. 상담도 친절하게 잘 해주셨습니다.</p>
-      </div>
-      <div class="rev">
-        <div class="top"><div class="who">이○○<span class="tag">관심고객</span></div><div class="date">2026.06.08</div></div>
-        <div class="st">★★★★★</div>
-        <p>오션뷰 세대 조망 시뮬레이션 보여주셔서 좋았어요. 사전예약 혜택 안내도 자세히 받았습니다. 59타입 실속형도 신혼부부한테 딱일 것 같아요.</p>
-      </div>
-      <div class="rev">
-        <div class="top"><div class="who">박○○<span class="tag">방문상담</span></div><div class="date">2026.06.05</div></div>
-        <div class="st">★★★★☆</div>
-        <p>교통이랑 학군 설명이 구체적이라 신뢰가 갔습니다. 주차대수도 넉넉한 편이라 마음에 들었어요. 분양가 안내가 타입별로 명확했으면 더 좋았을 듯!</p>
-      </div>
+    <div class="faq-list">
+      <details open>
+        <summary><span class="q">Q</span>현재 분양 단계는 어떻게 되나요?</summary>
+        <div class="a">2024년 10월 1순위 청약을 진행했으며, 현재는 잔여세대 분양 문의를 받고 있습니다. 동·호수 및 잔여 현황은 상담 시 안내해 드립니다.</div>
+      </details>
+      <details>
+        <summary><span class="q">Q</span>청약통장이 없어도 상담이 가능한가요?</summary>
+        <div class="a">네, 잔여세대 분양 상담은 청약통장 보유 여부와 무관하게 가능합니다. 자세한 신청 자격은 상담 시 개별 안내드립니다.</div>
+      </details>
+      <details>
+        <summary><span class="q">Q</span>분양가와 납부 조건이 궁금합니다.</summary>
+        <div class="a">전용 59㎡ 약 6억 2,000만원대, 전용 84㎡ 최고 8억 4,100만원 수준입니다. 타입·층·향에 따라 상이하며, 계약금·중도금 등 납부 조건은 상담 시 안내해 드립니다.</div>
+      </details>
+      <details>
+        <summary><span class="q">Q</span>입주는 언제 예정인가요?</summary>
+        <div class="a">2027년 9월 입주 예정입니다. 일정은 공사 및 사업 추진 상황에 따라 변동될 수 있으며, 정확한 내용은 입주자 모집공고를 따릅니다.</div>
+      </details>
+      <details>
+        <summary><span class="q">Q</span>견본주택(모델하우스) 방문은 어떻게 하나요?</summary>
+        <div class="a">관심고객 등록 또는 분양문의 전화(051-741-3300)로 예약하시면 1:1 방문 상담을 도와드립니다. 사전 예약 시 대기 없이 관람하실 수 있습니다.</div>
+      </details>
+      <details>
+        <summary><span class="q">Q</span>중도금 대출 등 금융 조건은 어떻게 되나요?</summary>
+        <div class="a">중도금 관련 사항은 입주자 모집공고 및 금융기관 조건에 따릅니다. 자세한 내용은 분양 상담을 통해 확인하실 수 있습니다.</div>
+      </details>
     </div>
   </div>
 </section>
@@ -722,7 +877,7 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
 <!-- 직방 공식 로고 (분양 광고 제휴) -->
 <a class="zb-badge" href="https://www.zigbang.com" target="_blank" rel="noopener" aria-label="직방">
   <img src="assets/img/zigbang_logo.png" alt="직방">
-  <span>분양 광고</span>
+  <span>바로가기</span>
 </a>
 
 <script>
@@ -753,6 +908,28 @@ function pickThumb(el){
     clone.onerror=function(){phFail(this)};
     clone.onload=function(){main.classList.remove('ph')};
     main.appendChild(clone);
+  }
+}
+
+/* 입지조건·프리미엄 갤러리: 우측 슬롯 클릭 → 중앙 확대 */
+function pickShot(el){
+  var set=el.closest('.imgset'); if(!set) return;
+  set.querySelectorAll('.iv-thumbs .shot').forEach(function(t){t.classList.remove('active')});
+  el.classList.add('active');
+  var main=set.querySelector('.iv-main');
+  var cap=main.querySelector('.iv-cap');
+  var label=el.dataset.cap||el.dataset.label||'';
+  if(cap) cap.textContent=label;
+  var old=main.querySelector('img'); if(old) old.remove();
+  main.classList.add('ph');
+  main.dataset.label=el.dataset.label||'';
+  var src=el.dataset.src||'';
+  if(src){
+    var im=document.createElement('img');
+    im.src=src; im.alt=label;
+    im.onerror=function(){phFail(this)};
+    im.onload=function(){main.classList.remove('ph')};
+    main.insertBefore(im, cap||null);
   }
 }
 
@@ -817,7 +994,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
 
 /* 스티키 탭 스크롤스파이 + 맨위로 버튼 */
 var tabLinks=document.querySelectorAll('.tabs a');
-var sections=['overview','site','premium','floorplan','reviews','register'].map(function(id){return document.getElementById(id)});
+var sections=['overview','site','premium','floorplan','faq','register'].map(function(id){return document.getElementById(id)});
 window.addEventListener('scroll',function(){
   var y=window.pageYOffset+140, cur='';
   sections.forEach(function(s){ if(s && s.offsetTop<=y) cur=s.id; });
