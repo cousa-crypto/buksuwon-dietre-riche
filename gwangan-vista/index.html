@@ -20,9 +20,10 @@
    ※ 수치/문구는 샘플 값 — 실제 사업 데이터로 교체하세요.
    ============================================================ */
 :root{
-  --ink:#16213a;        /* 딥 네이비 (브랜드) */
-  --ink2:#27395c;
-  --gold:#b5985a;       /* 포인트 골드 */
+  --ink:#16213a;        /* 딥 네이비 (메인) */
+  --ink2:#27395c;       /* 네이비 라이트/호버 */
+  --brand:#2b3a5a;      /* 보조 다크 */
+  --gold:#b5985a;       /* 서브 포인트 골드 (프리미엄) */
   --gold-d:#9a7e44;
   --sale:#d94f4f;       /* 혜택 강조(컬리 할인 레드 대체) */
   --txt:#222;
@@ -334,6 +335,45 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
 .why-quote{margin-top:26px;text-align:center;color:#cdd4e0;font-size:15px;font-weight:600;border-top:1px solid rgba(255,255,255,.10);padding-top:28px}
 .why-quote .g{color:var(--gold)}
 
+/* ============ 이벤트 팝업 (모달) ============ */
+.modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:20px;
+  background:rgba(10,16,30,.62)}
+.modal.open{display:flex}
+.modal-card{position:relative;width:100%;max-width:380px;max-height:92vh;overflow-y:auto;background:#fff;
+  border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.45);animation:popIn .25s ease}
+@keyframes popIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.modal-close{position:absolute;top:12px;right:12px;z-index:2;width:34px;height:34px;border-radius:50%;border:none;
+  background:rgba(0,0,0,.38);color:#fff;font-size:21px;line-height:1;cursor:pointer}
+.modal-hero{position:relative;aspect-ratio:16/10;background:var(--ink);border-radius:18px 18px 0 0;overflow:hidden}
+.modal-hero img{width:100%;height:100%;object-fit:cover;opacity:.9}
+.modal-hero .ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 24px;
+  background:linear-gradient(180deg,rgba(22,33,58,.15),rgba(22,33,58,.86))}
+.modal-hero .badge2{align-self:flex-start;background:var(--gold);color:#1c1405;font-size:11px;font-weight:800;
+  letter-spacing:.08em;padding:5px 11px;border-radius:30px;margin-bottom:10px}
+.modal-hero h3{color:#fff;font-size:22px;font-weight:800;line-height:1.3;letter-spacing:-.02em}
+.modal-hero .sub{color:#e4cd97;font-size:13px;font-weight:700;margin-top:6px}
+/* 경품(제품컷) 이미지용: 흰 배경에 잘림 없이 표시 */
+.modal-hero.gift{display:flex;align-items:center;justify-content:center;background:#f3f5f8}
+.modal-hero.gift img{width:auto;max-width:74%;height:84%;object-fit:contain;opacity:1}
+.modal-hero .badge2{position:absolute;top:14px;left:14px;margin:0;z-index:2}
+.modal-title{font-size:21px;color:var(--ink);font-weight:800;line-height:1.34;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.modal-title .g{color:var(--gold-d)}
+.modal-desc{font-size:13.5px;color:#777;line-height:1.6;text-align:center;margin-bottom:16px}
+.modal-note{font-size:11.5px;color:#aaa;margin:2px 0 16px}
+.modal-body{padding:22px 24px 6px}
+.modal-body ul{list-style:none;margin-bottom:18px}
+.modal-body li{position:relative;padding:9px 0 9px 26px;font-size:14.5px;color:#444;border-bottom:1px solid var(--soft)}
+.modal-body li b{color:var(--ink)}
+.modal-body li::before{content:"✓";position:absolute;left:2px;color:var(--gold);font-weight:800}
+.modal-cta{display:block;width:100%;height:52px;line-height:52px;text-align:center;border:none;border-radius:8px;
+  background:var(--ink);color:#fff;font-size:16px;font-weight:800;text-decoration:none}
+.modal-cta:hover{background:var(--ink2)}
+.modal-tel{display:block;text-align:center;margin-top:10px;font-size:14px;color:var(--muted)}
+.modal-tel b{color:var(--ink)}
+.modal-foot{display:flex;align-items:center;justify-content:space-between;padding:14px 24px 18px}
+.modal-foot label{display:flex;align-items:center;gap:7px;font-size:13px;color:#8a8f99;cursor:pointer}
+.modal-foot .x{background:none;border:none;font-size:13px;color:#8a8f99;cursor:pointer;text-decoration:underline}
+
 /* ============ 반응형 ============ */
 @media(max-width:980px){
   .product{grid-template-columns:1fr;gap:30px}
@@ -422,6 +462,33 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
     <a href="#register" onclick="toggleDrawer(false)">관심고객등록</a>
     <a href="#location" onclick="toggleDrawer(false)">오시는 길</a>
     <a href="tel:051-741-3300" style="color:var(--gold)">📞 분양문의 051-741-3300</a>
+  </div>
+</div>
+
+<!-- ===== 이벤트 팝업 ===== -->
+<div class="modal" id="eventPopup" onclick="if(event.target===this)closePopup()">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-label="이벤트 안내">
+    <button class="modal-close" onclick="closePopup()" aria-label="닫기">×</button>
+    <div class="modal-hero gift">
+      <span class="badge2">SPECIAL EVENT</span>
+      <img src="assets/img/popup.jpg" onerror="this.onerror=null;this.src='assets/img/aerial.jpg'" alt="이벤트 경품 이미지">
+    </div>
+    <div class="modal-body">
+      <h3 class="modal-title">관심고객 등록하고<br><span class="g">스타벅스 아메리카노</span> 받기</h3>
+      <p class="modal-desc">광안 센텀 비스타동원 관심고객으로 등록하시면<br>푸짐한 혜택을 드립니다.</p>
+      <ul>
+        <li>스타벅스 아메리카노 <b>기프티콘 증정</b></li>
+        <li>잔여세대 동호수 우선 안내</li>
+        <li>견본주택 1:1 방문 예약</li>
+      </ul>
+      <p class="modal-note">※ 경품은 소진 시 조기 종료될 수 있습니다.</p>
+      <a class="modal-cta" href="#register" onclick="closePopup()">관심고객 등록하기</a>
+      <span class="modal-tel">바로 상담 <b>051-741-3300</b></span>
+    </div>
+    <div class="modal-foot">
+      <label><input type="checkbox" id="popupToday"> 오늘 하루 보지 않기</label>
+      <button class="x" onclick="closePopup()">닫기</button>
+    </div>
   </div>
 </div>
 
@@ -1001,6 +1068,19 @@ window.addEventListener('scroll',function(){
   tabLinks.forEach(function(a){ a.classList.toggle('active',a.dataset.t===cur); });
   document.getElementById('topBtn').classList.toggle('show',window.pageYOffset>600);
 });
+
+/* 이벤트 팝업 */
+function closePopup(){
+  var chk=document.getElementById('popupToday');
+  if(chk && chk.checked){ try{ localStorage.setItem('gv_popup_hide', new Date().toDateString()); }catch(e){} }
+  document.getElementById('eventPopup').classList.remove('open');
+}
+(function initPopup(){
+  var hide=false;
+  try{ hide = localStorage.getItem('gv_popup_hide') === new Date().toDateString(); }catch(e){}
+  if(!hide){ setTimeout(function(){ document.getElementById('eventPopup').classList.add('open'); }, 700); }
+})();
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closePopup(); });
 </script>
 </body>
 </html>
