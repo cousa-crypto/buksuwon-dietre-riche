@@ -267,6 +267,14 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
   background:#fff;font-size:18px;color:var(--ink);box-shadow:0 3px 12px rgba(0,0,0,.12);display:none}
 .top-btn.show{display:block}
 
+/* 직방 공식 로고 배지 (좌측 하단 고정) */
+.zb-badge{position:fixed;left:18px;bottom:22px;z-index:56;display:flex;flex-direction:column;align-items:center;gap:3px;
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 13px 7px;
+  box-shadow:0 4px 16px rgba(0,0,0,.12);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.zb-badge:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.zb-badge img{height:21px;width:auto;display:block}
+.zb-badge span{font-size:10px;color:#9aa0ab;letter-spacing:.02em;font-weight:600}
+
 /* ============ 반응형 ============ */
 @media(max-width:980px){
   .product{grid-template-columns:1fr;gap:30px}
@@ -290,6 +298,8 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
   footer{padding-bottom:80px}
   .topbar{display:none}
   .rev-summary{gap:24px}
+  .zb-badge{bottom:80px;left:12px;padding:7px 10px 5px}
+  .zb-badge img{height:16px}
 }
 </style>
 </head>
@@ -682,6 +692,12 @@ footer .ft-info .disc{color:#6f7889;max-width:none;margin:14px 0 0;font-size:11.
 
 <!-- 맨위로 -->
 <button class="top-btn" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- 직방 공식 로고 (분양 광고 제휴) -->
+<a class="zb-badge" href="https://www.zigbang.com" target="_blank" rel="noopener" aria-label="직방">
+  <img src="assets/img/zigbang_logo.png" alt="직방">
+  <span>분양 광고</span>
+</a>
 
 <script>
 /* 이미지 로드 실패 → 플레이스홀더 라벨 표시 */
