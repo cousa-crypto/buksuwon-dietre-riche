@@ -1059,12 +1059,55 @@ function pickType(i,btn){
   document.querySelectorAll('.type-panel').forEach(function(p,idx){p.classList.toggle('active',idx===i)});
 }
 
-/* 폼 제출 (샘플) */
+/* ===== 관심고객 등록 → Formspree 전송 =====
+   제출 내역: Formspree 대시보드 + 이메일 알림 + CSV. (구글시트 연동도 대시보드에서 가능)
+   ※ Formspree 무료플랜: 폼 첫 제출 시 소유자 이메일로 활성화 확인메일이 한 번 옵니다(승인 후 정상 수집). */
+var LEAD_ENDPOINT = 'https://formspree.io/f/xaqzvydv';
+
 function submitReg(e){
   e.preventDefault();
-  var n=document.getElementById('rname').value.trim();
-  alert((n||'고객')+'님, 관심고객 등록이 접수되었습니다.\n빠른 시일 내 분양 안내 연락드리겠습니다. (샘플 동작)');
-  e.target.reset();
+  var form=e.target;
+  var name=document.getElementById('rname').value.trim();
+  var tel=document.getElementById('rtel').value.trim();
+  var type=document.getElementById('rtype').value;
+  if(!name || !tel){ alert('성함과 연락처를 입력해 주세요.'); return false; }
+  if(!/^[0-9()+\-\s]{8,}$/.test(tel)){ alert('연락처를 정확히 입력해 주세요.'); return false; }
+
+  if(!LEAD_ENDPOINT){
+    alert((name||'고객')+'님, 관심고객 등록이 접수되었습니다.\n빠른 시일 내 분양 안내 연락드리겠습니다. (샘플 동작)');
+    form.reset(); return false;
+  }
+
+  var btn=form.querySelector('.submit'); var orig=btn.textContent;
+  btn.disabled=true; btn.textContent='등록 중...';
+  var fd=new FormData();
+  fd.append('현장','광안 센텀 비스타동원');
+  fd.append('성함',name);
+  fd.append('연락처',tel);
+  fd.append('관심타입',type||'(선택 안함)');
+  fd.append('동의','Y');
+  fd.append('등록경로',location.href);
+  fd.append('_subject','[광안 센텀 비스타동원] 관심고객 등록 - '+name);
+  var reset=function(){ btn.disabled=false; btn.textContent=orig; };
+
+  fetch(LEAD_ENDPOINT,{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+    .then(function(r){
+      reset();
+      if(r.ok){
+        form.reset();
+        alert(name+'님, 관심고객 등록이 완료되었습니다.\n빠른 시일 내 분양 안내 연락드리겠습니다.');
+      }else{
+        r.json().then(function(d){
+          var msg=(d && d.errors && d.errors[0] && d.errors[0].message) ? d.errors[0].message
+                  : '전송에 실패했습니다. 잠시 후 다시 시도하시거나 051-741-3300으로 연락 주세요.';
+          alert(msg);
+        }).catch(function(){ alert('전송에 실패했습니다. 051-741-3300으로 연락 주세요.'); });
+      }
+    })
+    .catch(function(){
+      reset();
+      alert('네트워크 오류로 전송에 실패했습니다. 051-741-3300으로 연락 주세요.');
+    });
   return false;
 }
 
